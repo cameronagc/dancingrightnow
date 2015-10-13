@@ -1,0 +1,45 @@
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script>var myApp = angular.module('myApp',[]);
+
+<section>
+    <div class="page-header">
+        <h1>All Users</h1><a href="#!/signup">Create a user</a>
+   
+    <table class="table table-striped">
+    <thead>
+    <tr ng-show="users.length > 0" >
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+       </tr>
+    </thead>
+    <tbody data-ng-repeat="user in users" data-ng-href="#!/user/{{user._id}}">
+    <tr ng-class="{even: $even, odd: $odd}">
+        <td data-ng-bind="user.displayname"></td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.roles }} </td>
+       <td><a ng-click="edit(event)" data-ng-href="#!/users/{{user._id}}">edit</a>
+    </tr>
+    </tbody>
+
+</table>
+<!--     <div class="list-group">
+        <a data-ng-repeat="danceevent in danceevents" data-ng-href="#!/danceevents/{{danceevent._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="danceevent.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="danceevent.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="danceevent.name"></h4>
+            <h5 data-ng-bind="danceevent.venue"</h5>
+            <h5 data-ng-bind="danceevent.street"</h5>
+            <h5 data-ng-bind="danceevent.startHour"</h5> - <h5 data-ng-bind="danceevent.endHour"</h5>
+        </a>
+    </div>  -->
+   
+    <div class="alert alert-warning text-center" data-ng-hide="!danceevents.$resolved || danceevents.length">
+    	No Users yet, why don't you <a href="/#!/danceevents/create">create one</a>?
+    </div>
+</section>
+

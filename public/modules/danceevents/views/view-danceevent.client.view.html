@@ -1,0 +1,26 @@
+<section data-ng-controller="DanceeventsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="danceevent.name"></h1>
+		<small class="text-muted" data-ng-bind="danceevent.date | date:'MM/dd/yyyy'"></small>
+			<small class="text-muted" data-ng-bind="danceevent.startHour"></small>
+			<small class=data-ng-bind="danceevent.startMinute"></small>
+		<small class="text-muted" data-ng-bind="danceevent.venue"> - <small data-ng-bind="danceevent.street"></small>
+	</div>
+	<img ng-src="danceevent.flyer" />
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == danceevent.user._id))">
+		<a class="btn btn-primary" href="/#!/danceevents/{{danceevent._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="danceevent.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="danceevent.user.displayName"></span>
+		</em>
+	</small>
+</section>

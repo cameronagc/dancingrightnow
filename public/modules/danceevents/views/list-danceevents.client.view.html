@@ -1,0 +1,51 @@
+<section data-ng-controller="DanceeventsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Dance Events</h1><a href="#!/danceevents/create">Create an event</a>
+    </div>
+      <table class="table table-striped">
+    <thead>
+    <tr ng-show="danceevents.length > 0" >
+        <th>Event</th>
+        <th>Venue</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody data-ng-repeat="danceevent in danceevents" data-ng-href="#!/danceevents/{{danceevent._id}}">
+    <tr ng-class="{even: $even, odd: $odd}">
+        <td data-ng-bind="danceevent.name"></td>
+        <td>{{ danceevent.venue }}</td>
+        <td>{{ danceevent.street }} </td>
+        <td data-ng-bind="danceevent.date | date:'MM/dd/yyyy'"></td>
+    <!--  <td>{{ danceevent.date }} </td> -->
+        <td>{{ danceevent.startHour }}:{{danceevent.startMinute}}{{danceevent.startPM}}</td>
+        <td>{{ danceevent.endHour }}:{{danceevent.endMinute}}{{danceevent.endPM}}</td>
+
+        <td><a ng-click="edit(event)" data-ng-href="#!/danceevents/{{danceevent._id}}">edit</a>
+    </tr>
+    </tbody>
+
+</table>
+<!--     <div class="list-group">
+        <a data-ng-repeat="danceevent in danceevents" data-ng-href="#!/danceevents/{{danceevent._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="danceevent.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="danceevent.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="danceevent.name"></h4>
+            <h5 data-ng-bind="danceevent.venue"</h5>
+            <h5 data-ng-bind="danceevent.street"</h5>
+            <h5 data-ng-bind="danceevent.startHour"</h5> - <h5 data-ng-bind="danceevent.endHour"</h5>
+        </a>
+    </div>  -->
+   
+    <div class="alert alert-warning text-center" data-ng-hide="!danceevents.$resolved || danceevents.length">
+    	No Events yet, why don't you <a href="/#!/danceevents/create">create one</a>?
+    </div>
+</section>
+

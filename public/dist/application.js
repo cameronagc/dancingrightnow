@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'dancerightnow';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils','datePicker'
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils','datePicker', 'ngFileUpload' 
 	];
 
 	// Add a new vertical module
@@ -297,8 +297,8 @@ angular.module('danceevents').config(['$stateProvider',
 'use strict';
 var myApp = angular.module('myApp', ['autofill-directive']);
 // Danceevents controller
-angular.module('danceevents').controller('DanceeventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Danceevents',
-	function($scope, $stateParams, $location, Authentication, Danceevents) {
+angular.module('danceevents').controller('DanceeventsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Danceevents', 'Upload',
+	function($scope, $stateParams, $location, Authentication, Danceevents, Upload) {
 		$scope.authentication = Authentication;
 		$scope.params = {
 			eventDate: null
@@ -323,8 +323,28 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
                 endPM:this.endPM,
                 description:this.description,
 				longitude: this.longitude,
-				latitude: this.latitude
+				latitude: this.latitude,
+				flyer : this.flyer
 			});
+
+			//$scope.upload = function (file) {
+				Upload.upload({
+					url: 'danceevents',
+					data: danceevent
+				}).then(function (resp) {
+					console.log('Success ' + resp.config.data.file.name + 'uploaded.response: ' + resp.data);
+					$location.path('danceevents/' + resp.data._id);
+
+					// Clear form fields
+					$scope.name = '';
+				}, function (resp) {
+					console.log('Error status: ' + resp.status);
+					$scope.error = resp.message;
+				}, function (evt) {
+					var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+					console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+				});
+			//};
 
 			// Redirect after save
 			danceevent.$save(function(response) {

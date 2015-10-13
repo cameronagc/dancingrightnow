@@ -4,7 +4,7 @@ module.exports = {
 	app: {
 		title: 'Dancing Right Now',
 		description: 'Find or Create a Dance Event Near You',
-		keywords: 'Dancing, Dance Compeitions, Dance Events'
+		keywords: 'Dancing, Dance Competitions, Dance Events'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
@@ -30,13 +30,11 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery-1.10.2.js',
 				'public/lib/jquery/dist/jquery-ui.js',
-				'public/lib/angular-datepicker/dist/angular-datepicker.js',
+				'public/lib/angular-datepicker/dist/angular-datepicker.min.js',
 				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
 				'public/geolocate/geolocate.js',
 				'public/lib/autofill-directive/autofill-directive.js',
 				'public/lib/angular-resource/angular-resource.js'
-				//'public/lib/bootstrap/controls/pikaday.js',
-				//'public/lib/bootstrap/controls/datepicker.js'
 			]
 		},
 		css: [

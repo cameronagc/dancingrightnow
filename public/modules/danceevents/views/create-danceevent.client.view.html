@@ -4,15 +4,15 @@
               <h1>New Dance Event</h1>
           <span data-ng-bind="authentication.user.displayName"></span>-<span data-ng-bind="authentication.user.roles"></span>
     </div>
-    <script type="text/javascript">console.log("hello World")</script>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form class="form-horizontal" data-ng-submit="create(newDanceEvent)" novalidate>
+            {{newDanceEvent}}
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name"
+                        <input type="text" data-ng-model="newDanceEvent.name" id="name" class="form-control" placeholder="Name"
                                required>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <label class="control-label" for="venue">Venue</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="venue" id="venue" class="form-control"
+                        <input type="text" data-ng-model="newDanceEvent.venue" id="venue" class="form-control"
                                placeholder="Venue Name" required>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                     <label class="control-label" for="address">Address</label>
 
                     <div class="controls">
-                        <input id="autocomplete" data-ng-model="street" class="form-control"
+                        <input id="autocomplete" data-ng-model="newDanceEvent.street" class="form-control"
                                placeholder="Enter your address"
                                onFocus="geolocate()" type="text">
                     </div>
@@ -37,8 +37,8 @@
                     <label class="control-label" for="test">Date</label>
 
                     <div class="controls">
-                        <input type="datetime" date-time ng-model="params.eventDate" id="date" view="date" min-view="date" auto-close="true" class="form-control"
-                               placeholder="mm/dd/yy" format="MM/dd/yy" required>
+                        <input type="datetime" date-time ng-model="newDanceEvent.params.eventDate" id="date" view="date" min-view="date" auto-close="true" class="form-control"
+                               placeholder="mm/dd/yy" format="MM/dd/yy">
                     </div>
                 </div>
 
@@ -46,7 +46,7 @@
                     <!--Single Image with validations-->
                 <div class="form-group">
                     <label class="control-label" for="flyer">Upload A Flyer</label>
-                    <input type="file"  data-ng-model="flyer" name="flyer" ngf-pattern="'image/*'"
+                    <input type="file" id="flyer"  data-ng-model="newDanceEvent.flyer" name="flyer" ngf-pattern="'image/*'"
                          accept="image/*" ngf-max-size="6MB" ngf-min-height="100">
                          <!--ngf-resize="{width: 100, height: 100}"-->
 
@@ -72,7 +72,7 @@
                             <td><label class="control-label" for="startHour">Start Time</label></td>
                         </tr>
                         <tr>
-                            <td><select id="startHour" ng-model='startHour'>
+                            <td><select id="startHour" ng-model='newDanceEvent.startHour'>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -86,12 +86,12 @@
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>:
-                                <select id="startMinute" ng-model='startMinute'>
+                                <select id="startMinute" ng-model='newDanceEvent.startMinute'>
                                     <option value="00">00</option>
                                     <option value="15">15</option>
                                     <option value="30">30</option>
                                 </select>
-                                <select id="startPM" ng-model='startPM'>
+                                <select id="startPM" ng-model='newDanceEvent.startPM'>
                                     <option value="PM">PM</option>
                                     <option value="AM">AM</option>
                                 </select></td>

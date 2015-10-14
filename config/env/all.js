@@ -11,6 +11,7 @@ module.exports = {
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
 	assets: {
+
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
@@ -19,8 +20,12 @@ module.exports = {
 				'public/lib/angular-datepicker/dist/angular-datepicker.css'
 			],
 			js: [
+				'public/lib/jquery/dist/jquery-1.10.2.js',
+				'public/lib/jquery/dist/jquery-ui.js',
+					'public/geolocate/geolocate.js',
+
 				'public/lib/angular/angular.js',
-				'public/lib/angular-resource/angular-resource.js', 
+				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
 				'public/lib/angular-touch/angular-touch.js', 
@@ -28,13 +33,9 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/jquery/dist/jquery-1.10.2.js',
-				'public/lib/jquery/dist/jquery-ui.js',
 				'public/lib/angular-datepicker/dist/angular-datepicker.min.js',
 				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
-				'public/geolocate/geolocate.js',
 				'public/lib/autofill-directive/autofill-directive.js',
-				'public/lib/angular-resource/angular-resource.js'
 			]
 		},
 		css: [

@@ -5,14 +5,14 @@
           <span data-ng-bind="authentication.user.displayName"></span>-<span data-ng-bind="authentication.user.roles"></span>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create(newDanceEvent)" novalidate>
-            {{newDanceEvent}}
+        <form name="danceEventForm" class="form-horizontal" novalidate>
+
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="newDanceEvent.name" id="name" class="form-control" placeholder="Name"
+                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name"
                                required>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <label class="control-label" for="venue">Venue</label>
 
                     <div class="controls">
-                        <input type="text" data-ng-model="newDanceEvent.venue" id="venue" class="form-control"
+                        <input type="text" data-ng-model="venue" id="venue" class="form-control"
                                placeholder="Venue Name" required>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                     <label class="control-label" for="address">Address</label>
 
                     <div class="controls">
-                        <input id="autocomplete" data-ng-model="newDanceEvent.street" class="form-control"
+                        <input id="autocomplete" data-ng-model="street" class="form-control"
                                placeholder="Enter your address"
                                onFocus="geolocate()" type="text">
                     </div>
@@ -37,20 +37,25 @@
                     <label class="control-label" for="test">Date</label>
 
                     <div class="controls">
-                        <input type="datetime" date-time ng-model="newDanceEvent.params.eventDate" id="date" view="date" min-view="date" auto-close="true" class="form-control"
+                        <input type="datetime" date-time ng-model="params.eventDate" id="date" view="date" min-view="date" auto-close="true" class="form-control"
                                placeholder="mm/dd/yy" format="MM/dd/yy">
                     </div>
                 </div>
 
                 <!--<form ng-app="fileUpload" ng-controller="MyCtrl" name="form">-->
                     <!--Single Image with validations-->
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="control-label" for="flyer">Upload A Flyer</label>
-                    <input type="file" id="flyer"  data-ng-model="newDanceEvent.flyer" name="flyer" ngf-pattern="'image/*'"
-                         accept="image/*" ngf-max-size="6MB" ngf-min-height="100">
-                         <!--ngf-resize="{width: 100, height: 100}"-->
-
-                    </div>
+                    <input type="file" id="flyer"  data-ng-model="flyerImage" name="flyer" ngf-pattern="'image/*'"
+                         accept="image/*" ngf-max-size="6MB" ngf-min-height="100" ngf-change="console.log('changed file!');">
+                         &lt;!&ndash;ngf-resize="{width: 100, height: 100}"&ndash;&gt;-->
+ <input type="file" ngf-select ng-model="flyerImage" name="file"
+             accept="image/*" ngf-max-size="2MB" required>
+      <i ng-show="danceEventForm.flyerImage.$error.required">*required</i><br>
+      <i ng-show="danceEventForm.flyerImage.$error.maxSize">File too large
+          {{picFile.size / 1000000|number:1}}MB: max 2M</i>
+      <img ng-show="danceEventForm.flyerImage.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                 <!--   </div>-->
                         <!-- Multiple files
                     <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                     Drop files: <div ngf-drop ng-model="files" class="drop-box">Drop</div>-->
@@ -72,7 +77,7 @@
                             <td><label class="control-label" for="startHour">Start Time</label></td>
                         </tr>
                         <tr>
-                            <td><select id="startHour" ng-model='newDanceEvent.startHour'>
+                            <td><select id="startHour" ng-model='startHour'>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -86,12 +91,12 @@
                                 <option value="11">11</option>
                                 <option value="12">12</option>
                             </select>:
-                                <select id="startMinute" ng-model='newDanceEvent.startMinute'>
+                                <select id="startMinute" ng-model="startMinute">
                                     <option value="00">00</option>
                                     <option value="15">15</option>
                                     <option value="30">30</option>
                                 </select>
-                                <select id="startPM" ng-model='newDanceEvent.startPM'>
+                                <select id="startPM" ng-model="startPM">
                                     <option value="PM">PM</option>
                                     <option value="AM">AM</option>
                                 </select></td>
@@ -100,7 +105,7 @@
                         <tr>
                             <td><label class="control-label" for="endHour">End Time</label></td>
                         </tr>
-                        <td><select id="endHour" ng-model='endHour'>
+                        <td><select id="endHour" ng-model="endHour">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -114,12 +119,12 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>:
-                            <select id="endMinute" ng-model='endMinute'>
+                            <select id="endMinute" ng-model="endMinute">
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30">30</option>
                             </select>
-                            <select id="endPM" ng-model='endPM'>
+                            <select id="endPM" ng-model="endPM">
                                 <option value="PM">PM</option>
                                 <option value="AM">AM</option>
                             </select></td>
@@ -137,7 +142,8 @@
 
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-default">
+                    <!--<input type="submit" class="btn btn-default">-->
+                <button class="btn btn-default" ng-disabled="!danceEventForm.$valid" ng-click="create(flyerImage)" >Create</button>
                 </div>
                 <div data-ng-show="error" class="text-danger">
                     <strong data-ng-bind="error"></strong>

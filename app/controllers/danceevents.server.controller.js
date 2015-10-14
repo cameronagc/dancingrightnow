@@ -18,6 +18,13 @@ exports.create = function(req, res) {
 
 	var danceevent = new Danceevent(req.body);
 
+//	if(_.get(req,'file.fieldname') === 'flyer'){
+		body.flyer = 'https://s3.amazonaws.com/danceappprod/' + req.file.key; /*_.get(req,'file.key','');
+*///	}else{
+//		body.flyer = '';
+//	}
+
+
 	danceevent.user = req.user;
 
 	danceevent.save(function(err) {

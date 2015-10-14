@@ -7,15 +7,30 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
 		$scope.params = {
 			eventDate: null
 		};
-		$scope.newDanceEvent = {};
-		$scope.flyer = {};
 
 		// Create new Danceevent
-		$scope.create = function(formData) {
+		$scope.create = function(file) {
 			// Create new Danceevent object
-			var danceevent = new Danceevents (formData);
+			var danceevent = new Danceevents ({
+				name: this.name,
+				venue: this.venue,
+				street: this.street,
+				city: this.city,
+				state: this.state,
+				zip: this.zip,
+				date: this.params.eventDate,
+			    startHour:this.startHour,
+                startMinute:this.startMinute,
+                startPM:this.startPM,
+                endHour:this.endHour,
+                endMinute:this.endMinute,
+                endPM:this.endPM,
+                description:this.description,
+				longitude: this.longitude,
+				latitude: this.latitude
+			});
 
-			danceevent.flyer = $scope.flyer;
+			danceevent.flyer = file;
 
 			//$scope.upload = function (file) {
 				Upload.upload({

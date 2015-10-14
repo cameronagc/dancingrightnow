@@ -19,7 +19,10 @@ module.exports = {
 				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
 			],
-			css : []
+			css : [
+				'public/lib/bootstrap/dist/css/bootstrap.css',
+				'public/lib/bootstrap/dist/css/bootstrap-theme.css'
+			]
 		},
 		css: 'public/dist/application.min.css',
 		js: 'public/dist/application.min.js'

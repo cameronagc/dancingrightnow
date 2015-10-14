@@ -305,7 +305,7 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
 		};
 
 		// Create new Danceevent
-		$scope.create = function() {
+		$scope.create = function(file) {
 			// Create new Danceevent object
 			var danceevent = new Danceevents ({
 				name: this.name,
@@ -323,16 +323,18 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
                 endPM:this.endPM,
                 description:this.description,
 				longitude: this.longitude,
-				latitude: this.latitude,
-				flyer : this.flyer
+				latitude: this.latitude
 			});
+
+			danceevent.flyer = file;
 
 			//$scope.upload = function (file) {
 				Upload.upload({
 					url: 'danceevents',
 					data: danceevent
 				}).then(function (resp) {
-					console.log('Success ' + resp.config.data.file.name + 'uploaded.response: ' + resp.data);
+					//console.log('Success ' + resp.config.data.file.name + 'uploaded.response: ' + resp.data);
+					console.log(resp);
 					$location.path('danceevents/' + resp.data._id);
 
 					// Clear form fields
@@ -347,14 +349,14 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
 			//};
 
 			// Redirect after save
-			danceevent.$save(function(response) {
+			/*danceevent.$save(function(response) {
 				$location.path('danceevents/' + response._id);
 
 				// Clear form fields
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
+			});*/
 		};
 
 		// Remove existing Danceevent

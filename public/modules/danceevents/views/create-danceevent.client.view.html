@@ -34,6 +34,14 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="phone">Phone</label>
+
+                    <div class="controls">
+                        <input type="text" data-ng-model="phone" id="phone" class="form-control" placeholder="Venue Phone Number"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label" for="test">Date</label>
 
                     <div class="controls">
@@ -41,7 +49,15 @@
                                placeholder="mm/dd/yy" format="MM/dd/yy">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="control-label" for="price">Price</label>
 
+                    <div class="controls">
+                        <input id="price" data-ng-model="price" class="form-control"
+                               placeholder="Event Price"
+                              type="number">
+                    </div>
+                </div>
                 <!--<form ng-app="fileUpload" ng-controller="MyCtrl" name="form">-->
                     <!--Single Image with validations-->
                 <!--<div class="form-group">
@@ -49,13 +65,15 @@
                     <input type="file" id="flyer"  data-ng-model="flyerImage" name="flyer" ngf-pattern="'image/*'"
                          accept="image/*" ngf-max-size="6MB" ngf-min-height="100" ngf-change="console.log('changed file!');">
                          &lt;!&ndash;ngf-resize="{width: 100, height: 100}"&ndash;&gt;-->
- <input type="file" ngf-select ng-model="flyerImage" name="file"
+                <div class="form-group">
+                    <label class="control-label" for="flyer">Upload Flyer</label>
+                <input type="file" ngf-select ng-model="flyerImage" name="file"
              accept="image/*" ngf-max-size="2MB" required>
       <i ng-show="danceEventForm.flyerImage.$error.required">*required</i><br>
       <i ng-show="danceEventForm.flyerImage.$error.maxSize">File too large
           {{picFile.size / 1000000|number:1}}MB: max 2M</i>
       <img ng-show="danceEventForm.flyerImage.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-                 <!--   </div>-->
+                </div> <!--   </div>-->
                         <!-- Multiple files
                     <div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
                     Drop files: <div ngf-drop ng-model="files" class="drop-box">Drop</div>-->

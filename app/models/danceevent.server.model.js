@@ -49,6 +49,16 @@ var DanceeventSchema = new Schema({
 		default: '',
 		trim: true
 	},
+	price: {
+		type: Number,
+		default: '',
+		trim: true
+	},
+	phone: {
+		type: String,
+		default: '',
+		trim: true
+	},
 		
 		startHour: {
 		type: String,

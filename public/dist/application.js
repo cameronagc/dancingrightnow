@@ -315,6 +315,8 @@ angular.module('danceevents').controller('DanceeventsController', ['$scope', '$s
 				state: this.state,
 				zip: this.zip,
 				date: this.params.eventDate,
+				price:this.price,
+				phone:this.phone,
 			    startHour:this.startHour,
                 startMinute:this.startMinute,
                 startPM:this.startPM,

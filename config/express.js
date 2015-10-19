@@ -15,6 +15,9 @@ var fs = require('fs'),
 	cookieParser = require('cookie-parser'),
 	helmet = require('helmet'),
 	passport = require('passport'),
+	nodemailer = require('nodemailer'),
+    bcrypt = require('bcrypt-nodejs'),
+    async = require('async'),
 	mongoStore = require('connect-mongo')({
 		session: session
 	}),
@@ -84,6 +87,7 @@ module.exports = function(db) {
 
 	// CookieParser should be above session
 	app.use(cookieParser());
+
 
 	// Express MongoDB session storage
 	app.use(session({

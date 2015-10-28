@@ -17,6 +17,8 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-datepicker/dist/angular-datepicker.min.js',
 				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
+				'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcHaYCBtMsYPYCOhC7PUTYpVdsoScfbcM&signed_in=true&libraries=places&callback=initAutocomplete',
+				'public/geolocate/geolocate.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
 			],
 			css : [

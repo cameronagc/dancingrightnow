@@ -1,7 +1,10 @@
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcHaYCBtMsYPYCOhC7PUTYpVdsoScfbcM &libraries=places&callback=initAutocomplete"></script> -->
+
 <section data-ng-controller="DanceeventsController">
     <!--<script src="lib/autofill-directive/autofill-directive.js"></script>-->
        <div class="page-header">
               <h1>New Dance Event</h1>
+           <div id="demo"></div>
           <span data-ng-bind="authentication.user.displayName"></span>-<span data-ng-bind="authentication.user.roles"></span>
     </div>
      <div data-ng-hide="((authentication.user.roles == 'promoter'))" >You cannot add events. Request permission to add events <a href="mailto:cameronagc@gmail.com?subject=Promoter Application"> here</a>.  </div>
@@ -31,7 +34,7 @@
                     <div class="controls">
                         <input id="autocomplete" data-ng-model="street" class="form-control"
                                placeholder="Enter your address"
-                               onFocus="geolocate()" type="text">
+                               onfocus="geolocate()" type="text">
                     </div>
                 </div>
                 <div class="form-group">
@@ -170,6 +173,7 @@
             </fieldset>
         </form>
     </div>
+
 </section>
 
 

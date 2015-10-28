@@ -22,8 +22,8 @@ module.exports = {
 			js: [
 				'public/lib/jquery/dist/jquery-1.10.2.js',
 				'public/lib/jquery/dist/jquery-ui.js',
-					'public/geolocate/geolocate.js',
-
+				'https://maps.googleapis.com/maps/api/js?key=AIzaSyBcHaYCBtMsYPYCOhC7PUTYpVdsoScfbcM&signed_in=true&libraries=places&callback=initAutocomplete',
+				'public/geolocate/geolocate.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js', 

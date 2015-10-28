@@ -20,6 +20,9 @@ module.exports = function(app) {
 	});
 
 	// Danceevents Routes
+	// GET method route
+
+
 	app.route('/danceevents')
 		.get(danceevents.list)
 		.post(users.requiresLogin,  upload.single('flyer'), danceevents.create);
